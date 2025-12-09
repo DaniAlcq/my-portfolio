@@ -118,6 +118,7 @@ section{
   justify-content:space-between;
   align-items:center;
   padding:10px 0;
+  position:relative;           /* per z-index locali */
 }
 
 .brand-logo{
@@ -131,6 +132,7 @@ section{
   gap:22px;
   align-items:center;
   margin-left:-50px;
+  z-index:1500;
 }
 
 #navbar a{
@@ -165,6 +167,8 @@ section{
 .social-logo{
   height:48px;
   width:auto;
+  position:relative;
+  z-index:1000;
 }
 
 /* HAMBURGER */
@@ -174,6 +178,9 @@ section{
   font-size:26px;
   display:none;
   color:#fff;
+  cursor:pointer;
+  position:relative;
+  z-index:2002;        /* sopra tutto in header */
 }
 
 /* =========================================
@@ -224,7 +231,7 @@ section{
   flex-wrap:wrap;
 }
 
-/* LOGO gigante di sfondo */
+/* LOGO gigante di sfondo (usa un PNG/SVG solo icona) */
 .hero::after{
   content:"";
   position:absolute;
@@ -314,7 +321,7 @@ section{
   border:1px solid rgba(255,255,255,.12);
   transition:.3s;
   background:#000;
-  cursor:zoom-in; /* feedback cliccabile */
+  cursor:zoom-in;
 }
 
 .portfolio-grid img:hover{

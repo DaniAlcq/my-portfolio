@@ -4,24 +4,28 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio — Siti che convertono | Danilo Alacqua</title>
-  <meta name="description" content="Realizzo siti web veloci, responsive e orientati alla conversione. Guarda i miei lavori e contattami per il tuo progetto." />
+
+  <meta name="description" content="Realizzo grafiche sportive per società e atleti: matchday, risultati, MVP, calendari e materiali per i social." />
   <meta property="og:title" content="Portfolio — Siti che convertono | Danilo Alacqua" />
   <meta property="og:description" content="Realizzo siti web veloci, responsive e orientati alla conversione." />
   <meta property="og:type" content="website" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- HEADER -->
   <header class="header-tot">
     <div class="container header-inner">
-      <img class="brand-logo" src="img/logo.png" alt="Logo Danilo Sport Visual">
-    
+      <img class="brand-logo" src="img/logo.png" alt="Logo Danilo Alacqua Sport Design" />
+
       <button class="hamburger" id="hamburger" aria-label="Apri menu">
         &#9776;
       </button>
-      
+
       <nav id="navbar">
         <a href="index.html">Home</a>
         <a href="#portfolio">Lavori</a>
@@ -29,13 +33,12 @@
         <a href="#chi-sono">Chi sono</a>
         <a href="#contatti">Contatti</a>
       </nav>
-    
+
       <a href="https://www.instagram.com/tuo_profilo" target="_blank" rel="noopener noreferrer">
-        <img class="social-logo" src="img/instagram logo.png" alt="Instagram">
+        <img class="social-logo" src="img/instagram logo.png" alt="Instagram" />
       </a>
     </div>
   </header>
-  
 
   <main>
     <!-- HERO -->
@@ -59,7 +62,7 @@
     <section id="portfolio" class="portfolio-section">
       <div class="container">
         <h2 class="section-title">Portfolio</h2>
-        
+
         <h3 class="section-subtitle">Matchday / Next Match</h3>
         <div class="portfolio-grid">
           <img src="img/DERBY.png" alt="Locandina matchday">
@@ -83,7 +86,7 @@
 
         <h3 class="section-subtitle">Calendari settimanali e mensili</h3>
         <div class="portfolio-grid">
-          <img src="img/Calendario settimanale.png" alt="Calendario 2026">
+          <img src="img/Calendario settimanale.png" alt="Calendario settimanale">
           <img src="img/DASSAS.png" alt="Calendario Dicembre">
           <img src="img/AAA.png" alt="Calendario Dicembre">
           <img src="img/CAL.png" alt="Calendario Dicembre">
@@ -94,7 +97,7 @@
           <img src="img/bnbn.png" alt="Scarabeo">
           <img src="img/FFFFFF.png" alt="Logo">
           <img src="img/fvfvcxvz.png" alt="Logo">
-          <img src="img/new nextHH.png" alt="Logo">
+          <img src="img/new nextHH.png" alt="Locandina privata">
         </div>
       </div>
     </section>
@@ -156,7 +159,7 @@
     </section>
   </main>
 
-    <footer>
+  <footer>
     <p>© 2025 - Danilo Alacqua · Sport Visual Design</p>
   </footer>
 
@@ -192,7 +195,6 @@
       }
 
       thumbs.forEach(img => {
-        img.style.cursor = "zoom-in";
         img.addEventListener("click", () => {
           openLightbox(img.src, img.alt);
         });

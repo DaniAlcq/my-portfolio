@@ -1,25 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("hamburger");
-  const nav = document.getElementById("navbar");
+  const hamburger = document.getElementById("hamburger");
+  const navbar    = document.getElementById("navbar");
 
-  if (!btn || !nav) return;
+  if (!hamburger || !navbar) return;
 
-  // apre/chiude il menu
-  btn.addEventListener("click", () => {
-    nav.classList.toggle("open");   // usa la regola CSS #navbar.open
+  // toggle apertura/chiusura
+  hamburger.addEventListener("click", () => {
+    navbar.classList.toggle("open");
   });
 
-  // chiude il menu quando clicchi su una voce (su mobile)
-  nav.querySelectorAll("a").forEach(link => {
+  // chiudi al click su una voce
+  navbar.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
-      nav.classList.remove("open");
+      navbar.classList.remove("open");
     });
   });
 
-  // se ridimensioni oltre 768px, assicurati che il menu sia chiuso
+  // se ridimensioni sopra i 768px, assicura il menu visibile correttamente
   window.addEventListener("resize", () => {
     if (window.innerWidth > 768) {
-      nav.classList.remove("open");
+      navbar.classList.remove("open");
+      navbar.style.display = "flex";
+    } else {
+      navbar.style.display = "";
     }
   });
 });

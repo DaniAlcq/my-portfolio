@@ -360,13 +360,17 @@ section{
 
 /* FOOTER */
 footer{
-  background:rgba(0,0,0,.7);
+  background:#020308;
   text-align:center;
-  padding:20px 0;
+  padding:
+    20px
+    0
+    calc(20px + env(safe-area-inset-bottom));
   border-top:1px solid rgba(255,255,255,.06);
   color:var(--muted);
   font-size:14px;
 }
+
 
 /* LIGHTBOX */
 .lightbox{
@@ -430,31 +434,59 @@ footer{
 }
 
 @media(max-width:768px){
-  .hamburger{display:block;}
-  .social-logo{display:none;}
+  .hamburger{
+    display:block;
+    color:#fff;
+    
+    /* NUOVO: posizionamento fisso a destra */
+    position:absolute;
+    right:16px;
+    top:50%;
+    transform:translateY(-50%);
+  }
 
-#navbar{
-  display:none;
-  position:absolute;
-  background:#020308;
-  right:10px;
-  top:72px;
+  .social-logo{
+    display:none;
+  }
 
-  margin-left:0 !important;   /* <<< FIX CHIAVE */
+  /* Assicuriamoci che il container faccia da riferimento all'assoluto */
+  .header-inner{
+    position:relative;
+  }
 
-  min-width:180px;
-  flex-direction:column;
-  gap:14px;
-  border-radius:16px;
-  padding:18px;
-  border:1px solid rgba(255,255,255,.16);
-  box-shadow:0 10px 30px rgba(0,0,0,.65);
+  #navbar{
+    display:none;
+    position:absolute;
+    background:#020308;
+    right:10px;
+    top:72px;
+    margin-left:0 !important;
+    min-width:180px;
+    flex-direction:column;
+    gap:14px;
+    border-radius:16px;
+    padding:18px;
+    border:1px solid rgba(255,255,255,.16);
+    box-shadow:0 10px 30px rgba(0,0,0,.65);
+  }
+
+  #navbar.open{
+    display:flex;
+  }
+
+  .hero::after{
+    display:none;
+  }
+body{
+  background-color:#020308;
+  padding-bottom:env(safe-area-inset-bottom);
 }
 
-#navbar.open{
-  display:flex;
+  
 }
 
 
-  .hero::after{display:none;}
+body{
+  background-color:#020308;
+  padding-bottom:env(safe-area-inset-bottom);
 }

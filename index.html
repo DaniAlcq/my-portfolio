@@ -20,7 +20,7 @@
   <!-- HEADER -->
   <header class="header-tot">
     <div class="container header-inner">
-      <img class="brand-logo" src="img/logo.png" alt="Logo Danilo Alacqua Sport Design" />
+      <img class="brand-logo" src="img/adc.svg" alt="Logo Danilo Alacqua Sport Design" />
 
       <button class="hamburger" id="hamburger" aria-label="Apri menu">
         &#9776;
@@ -169,10 +169,30 @@
     <img class="lightbox-img" src="" alt="">
   </div>
 
-  <script src="js/menu.js" defer></script>
-
-  <!-- SCRIPT LIGHTBOX INLINE -->
+  <!-- SCRIPT UNICO: MENU + LIGHTBOX -->
   <script>
+    // HAMBURGER MENU
+    const hamburger = document.getElementById("hamburger");
+    const navbar    = document.getElementById("navbar");
+
+    if (hamburger && navbar) {
+      hamburger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        navbar.classList.toggle("open");
+      });
+
+      // chiudi cliccando fuori
+      document.addEventListener("click", function () {
+        navbar.classList.remove("open");
+      });
+
+      // non chiudere se clicchi dentro il menu
+      navbar.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+    }
+
+    // LIGHTBOX IMMAGINI PORTFOLIO
     (function () {
       const thumbs = document.querySelectorAll("#portfolio .portfolio-grid img");
       const lightbox = document.getElementById("lightbox");
@@ -201,14 +221,8 @@
       });
 
       closeBtn.addEventListener("click", closeLightbox);
-
-      lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) closeLightbox();
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeLightbox();
-      });
+      lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
+      document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
     })();
   </script>
 </body>

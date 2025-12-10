@@ -493,7 +493,7 @@ footer{
 
 .review-card{
   min-width:100%;
-  padding:26px 46px 30px;
+ padding:22px 64px 26px;
 }
 
 .review-text{
@@ -734,6 +734,6 @@ footer{
   }
 
   .review-card{
-    padding:22px 18px 26px;
+    padding:22px 64px 26px;
   }
 }

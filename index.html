@@ -490,16 +490,27 @@
         });
       }
 
-      if (form) {
+           if (form) {
         form.addEventListener("submit", async (e) => {
           e.preventDefault();
-          msg.textContent = "";
 
+          const submitBtn = form.querySelector("button[type='submit']");
+          // stato "invio in corso"
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Invio...";
+          }
+          msg.textContent = "⏳ Invio in corso...";
+          
           try {
-            await fetch(SHEET_URL, {
+            const res = await fetch(SHEET_URL, {
               method: "POST",
               body: new FormData(form)
             });
+
+            if (!res.ok) {
+              throw new Error("Bad response");
+            }
 
             msg.textContent = "✅ Recensione inviata!";
             form.reset();
@@ -513,9 +524,16 @@
             }, 1500);
           } catch {
             msg.textContent = "❌ Errore di invio, riprova.";
+          } finally {
+            // ripristina bottone
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Invia recensione";
+            }
           }
         });
       }
+
 
     });
   </script>

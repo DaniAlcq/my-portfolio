@@ -40,7 +40,7 @@
         <a href="#contatti">Contatti</a>
       </nav>
 
-      <a href="https://www.instagram.com/tuo_profilo" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.instagram.com/_daniloalacqua_/" target="_blank" rel="noopener noreferrer">
         <img class="social-logo" src="img/instagram logo.png" alt="Instagram">
       </a>
 
@@ -61,6 +61,14 @@
           <div class="hero-cta">
             <a href="#portfolio" class="btn btn-primary">Guarda i lavori</a>
             <a href="#contatti" class="btn btn-secondary">Contattami</a>
+          </div>
+        </div>
+
+        <!-- COLLABORAZIONI / CLIENTI -->
+        <div class="hero-clients">
+          <p class="clients-title">Collaborazioni</p>
+          <div class="clients-list">
+            <span>ASD Volley ’96 Milazzo</span>
           </div>
         </div>
       </div>
@@ -87,8 +95,8 @@
 
         <h3 class="section-subtitle">MVP / Scarabeo di giornata</h3>
         <div class="portfolio-grid">
-          <img src="img/2.png" alt="Grafica MVP 1">
-          <img src="img/1.png" alt="Grafica MVP 2">
+          <img src="img/2.jpg" alt="Grafica MVP 1">
+          <img src="img/1.jpg" alt="Grafica MVP 2">
         </div>
 
         <h3 class="section-subtitle">Calendari settimanali e mensili</h3>
@@ -96,7 +104,7 @@
           <img src="img/Calendario settimanale.png" alt="Calendario settimanale">
           <img src="img/DASSAS.png" alt="Calendario Dicembre 1">
           <img src="img/AAA.png" alt="Calendario Dicembre 2">
-          <img src="img/CAL.png" alt="Calendario Dicembre 3">
+          <img src="img/ggg.jpg" alt="Calendario Dicembre 3">
         </div>
 
         <h3 class="section-subtitle">Progetti non pubblicati</h3>
@@ -218,7 +226,7 @@
         </p>
         <div class="contact-info">
           <p>Email: <a href="mailto:danilo.lcq@gmail.com">danilo.lcq@gmail.com</a></p>
-          <p>Instagram: <a href="https://www.instagram.com/tuo_profilo" target="_blank" rel="noopener noreferrer">@tuo_profilo</a></p>
+          <p>Instagram: <a href="https://www.instagram.com/_daniloalacqua_/" target="_blank" rel="noopener noreferrer">@_daniloalacqua_</a></p>
         </div>
       </div>
     </section>
@@ -301,6 +309,12 @@
         });
       });
 
+      function closeLightbox() {
+        lb.classList.remove("open");
+        lbImg.src = "";
+        document.body.style.overflow = "";
+      }
+
       if (lb && lbClose) {
         lbClose.addEventListener("click", closeLightbox);
         lb.addEventListener("click", (e) => {
@@ -309,12 +323,6 @@
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape") closeLightbox();
         });
-      }
-
-      function closeLightbox() {
-        lb.classList.remove("open");
-        lbImg.src = "";
-        document.body.style.overflow = "";
       }
 
       // ========= RECENSIONI: CARICAMENTO DA GOOGLE SHEET =========
@@ -329,13 +337,6 @@
       let slides = [];
       let dots = [];
       let index = 0;
-
-      function updateCarousel() {
-        if (!slides.length) return;
-        index = (index + slides.length) % slides.length;
-        track.style.transform = `translateX(-${index * 100}%)`;
-        dots.forEach((d, i) => d.classList.toggle("active", i === index));
-      }
 
       function goToSlide(i) {
         if (!slides.length) return;
@@ -365,6 +366,12 @@
 
         index = 0;
         goToSlide(0);
+
+        dots.forEach((dot, di) => {
+          dot.addEventListener("click", () => {
+            goToSlide(di);
+          });
+        });
       }
 
       function setupCarouselFromData(reviews) {
@@ -379,7 +386,6 @@
           if (prevBtn) prevBtn.style.display = "none";
           if (nextBtn) nextBtn.style.display = "none";
           if (dotsBox) dotsBox.style.display = "none";
-          // se sheet vuoto, rimaniamo con messaggio
           return;
         }
 
@@ -421,18 +427,14 @@
         fetch(SHEET_URL)
           .then(res => res.json())
           .then(data => {
-            // data deve essere un array [{name,role,text},...]
             if (Array.isArray(data) && data.length > 0) {
               setupCarouselFromData(data);
             } else {
-              // Sheet vuoto
-              track.innerHTML = "";
-              dotsBox.innerHTML = "";
               setupCarouselFromData([]);
             }
           })
           .catch(() => {
-            // in caso di errore, usa le 3 recensioni statiche presenti in HTML
+            // in caso di errore, usa le recensioni statiche
             setupCarouselFromDom();
           });
       }

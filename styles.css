@@ -112,7 +112,7 @@ section{
 }
 
 .brand-logo{
-  height:62px;
+  height:72px;
   width:auto;
 }
 
@@ -176,7 +176,8 @@ section{
 
 .hero-inner{
   display:flex;
-  justify-content:flex-start;
+  justify-content:space-between;
+  align-items:flex-start;
   gap:40px;
 }
 
@@ -210,6 +211,41 @@ section{
   display:flex;
   gap:14px;
   flex-wrap:wrap;
+}
+
+/* COLLABORAZIONI HERO */
+.hero-clients{
+  min-width:220px;
+  margin-top:32px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.clients-title{
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--brand);
+  opacity:.9;
+}
+
+.clients-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.clients-list span{
+  font-size:14px;
+  color:var(--muted);
+  padding-left:10px;
+  border-left:2px solid rgba(32,242,208,.4);
+}
+
+.clients-extra{
+  opacity:.6;
+  font-style:italic;
 }
 
 /* logo grande di sfondo */
@@ -477,7 +513,7 @@ footer{
   color:var(--muted);
 }
 
-/* frecce — ai lati, non sopra al testo */
+/* frecce */
 .reviews-arrow{
   position:absolute;
   top:50%;
@@ -611,9 +647,51 @@ footer{
     right:-25%;
     opacity:0.06;
   }
+
+  .hero-clients{
+    margin-top:26px;
+    width:100%;
+    border-top:1px solid rgba(255,255,255,.08);
+    padding-top:18px;
+  }
+
+  .clients-list{
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:12px 18px;
+  }
+
+  .clients-list span{
+    border-left:0;
+    padding-left:0;
+    font-size:13px;
+  }
 }
 
 @media(max-width:768px){
+  body{
+    /* stesso gradiente, ma senza fixed per evitare problemi su mobile */
+    background:
+      radial-gradient(
+        900px 1200px at 0% 50%,
+        rgba(32,242,208,.18) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        900px 1200px at 100% 50%,
+        rgba(73,255,199,.15) 0%,
+        transparent 55%
+      ),
+      linear-gradient(
+        180deg,
+        #020308 0%,
+        #030712 40%,
+        #020308 100%
+      );
+    background-color:#020308;
+    background-attachment:scroll;
+  }
+
   .hamburger{
     display:block;
     color:#fff;
